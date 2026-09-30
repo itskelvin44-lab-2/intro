@@ -166,6 +166,45 @@
     .flow{min-height:560px}.columns{grid-template-columns:1fr;gap:15px}
     h1{font-size:34px}h2{font-size:30px}
   }
+  @media(max-width:640px){
+    body{overflow-x:hidden}
+    .topbar{
+      height:auto;min-height:60px;display:grid;grid-template-columns:minmax(0,1fr) auto;
+      gap:4px 12px;padding:9px 16px 0
+    }
+    .brand{font-size:20px}
+    .nav{
+      grid-column:1/-1;grid-row:2;width:100%;margin:0;gap:20px;
+      overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none
+    }
+    .nav::-webkit-scrollbar{display:none}
+    .nav a{display:flex;align-items:center;min-height:44px;padding:6px 0;white-space:nowrap}
+    .open{margin:0;padding:8px 12px;border-radius:8px;font-size:14px;white-space:nowrap}
+    main{padding:26px 16px calc(52px + env(safe-area-inset-bottom))}
+    h1{font-size:31px;letter-spacing:0;overflow-wrap:anywhere}
+    h2{font-size:27px;margin-top:40px}
+    h3{font-size:21px;overflow-wrap:anywhere}
+    p{font-size:16px}
+    .lede{font-size:16px}
+    .inline-link,code{overflow-wrap:anywhere}
+    .diagram{border-radius:10px}
+    .svg-diagram{padding:14px 12px;overflow-x:auto;overscroll-behavior-x:contain}
+    .diagram-svg{min-width:720px}
+    .security .diagram{padding:0 14px 14px!important;overflow-x:visible}
+    .security table,.security tbody{display:block;width:100%}
+    .security thead{display:none}
+    .security tr{
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;
+      padding:14px 0;border-bottom:1px solid #2d4437
+    }
+    .security td{min-width:0;padding:0;border:0;overflow-wrap:anywhere}
+    .security td:first-child{grid-column:1/-1;color:#f0efe9;font-weight:700}
+    .security td:not(:first-child)::before{
+      content:attr(data-label);display:block;margin-bottom:2px;
+      color:var(--muted);font-size:11px;font-weight:600
+    }
+    .footer{overflow-wrap:anywhere}
+  }
 </style>
 </head>
 <body>
@@ -466,10 +505,10 @@
     <table>
       <thead><tr><th>What</th><th>Public</th><th>Signed-in</th><th>Owner</th><th>After accept</th></tr></thead>
       <tbody>
-        <tr><td>Title, photos, price, area name</td><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-        <tr><td>Approximate pin</td><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-        <tr><td>Exact address, landmark, exact coordinates</td><td class="no">No</td><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-        <tr><td>Chat</td><td class="no">No</td><td class="no">No</td><td class="yes">Participants</td><td class="yes">Participants</td></tr>
+        <tr><td>Title, photos, price, area name</td><td class="no" data-label="Public">No</td><td class="yes" data-label="Signed-in">Yes</td><td class="yes" data-label="Owner">Yes</td><td class="yes" data-label="After accept">Yes</td></tr>
+        <tr><td>Approximate pin</td><td class="no" data-label="Public">No</td><td class="yes" data-label="Signed-in">Yes</td><td class="yes" data-label="Owner">Yes</td><td class="yes" data-label="After accept">Yes</td></tr>
+        <tr><td>Exact address, landmark, exact coordinates</td><td class="no" data-label="Public">No</td><td class="no" data-label="Signed-in">No</td><td class="yes" data-label="Owner">Yes</td><td class="yes" data-label="After accept">Yes</td></tr>
+        <tr><td>Chat</td><td class="no" data-label="Public">No</td><td class="no" data-label="Signed-in">No</td><td class="yes" data-label="Owner">Participants</td><td class="yes" data-label="After accept">Participants</td></tr>
       </tbody>
     </table>
   </div>
